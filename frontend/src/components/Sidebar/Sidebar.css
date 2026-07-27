@@ -1,0 +1,234 @@
+/* ==========================================================================
+   Sidebar.css – Collapsible Sidebar Styles (BEM)
+   ========================================================================== */
+
+.sidebar {
+  background: var(--bg-secondary, #0f172a);
+  height: 100vh;
+  border-right: 1px solid var(--border-color, #1e293b);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.sidebar--collapsed {
+  width: 64px;
+}
+
+.sidebar__header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+.sidebar__title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+.sidebar__toggle {
+  width: 28px;
+  height: 28px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #60a5fa;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  transition: all 0.2s ease;
+}
+
+.sidebar__toggle:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.sidebar__body {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar__section-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Model Selector */
+.model-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.model-selector__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.model-selector__option:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.model-selector__option input[type="radio"] {
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+/* Upload Section */
+.upload-zone {
+  background: rgba(15, 23, 42, 0.5);
+  border: 2px dashed #334155;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-zone:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.upload-zone__icon { font-size: 24px; margin-bottom: 8px; }
+.upload-zone__text { font-size: 11px; color: #94a3b8; }
+
+.upload-preview {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.upload-preview img {
+  width: 100%;
+  display: block;
+}
+
+.upload-preview__btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: rgba(15, 23, 42, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prediction Card */
+.prediction-card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prediction-card__label {
+  font-size: 16px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.prediction-card__confidence {
+  font-size: 11px;
+  color: #4ade80;
+  font-weight: 700;
+}
+
+/* View Mode Buttons */
+.view-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.view-mode-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.view-mode-btn:hover {
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.view-mode-btn--active {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #60a5fa;
+}
+
+.view-mode-btn__icon { font-size: 18px; }
+.view-mode-btn__text { font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+.sidebar__mini-icon {
+  width: 40px;
+  height: 40px;
+  background: #1e293b;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.sidebar__footer {
+  padding: 16px 20px;
+  font-size: 10px;
+  color: #475569;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  white-space: nowrap;
+}

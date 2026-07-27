@@ -1,0 +1,140 @@
+/* ==========================================================================
+   App.css – Global Layout Manager
+   ========================================================================== */
+
+.app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.app__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+
+.app__header {
+  height: 70px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(10, 14, 26, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+.app__logo-text {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.app__status-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #1e293b;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.app__status-badge--loading { color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
+.app__status-badge--animating { color: #818cf8; background: rgba(129, 140, 248, 0.1); }
+.app__status-badge--done { color: #4ade80; background: rgba(74, 222, 128, 0.1); }
+.app__status-badge--error { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+
+.app__content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Landscape Placeholder */
+.landing-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+.landing-placeholder__icon {
+  font-size: 80px;
+  margin-bottom: 24px;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+}
+
+.landing-placeholder h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.landing-placeholder p {
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.landing-placeholder__tip {
+  margin-top: 30px;
+  font-size: 11px;
+  color: #475569;
+  background: rgba(255,255,255,0.03);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* Workspace Grid */
+.app__workspace {
+  display: grid;
+  grid-template-columns: 1fr var(--panel-width);
+  height: 100%;
+  width: 100%;
+}
+
+.app__pipeline-area {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+}
+
+.app__loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 26, 0.8);
+  z-index: 20;
+  backdrop-filter: blur(4px);
+}
+
+.app__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(56, 189, 248, 0.2);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

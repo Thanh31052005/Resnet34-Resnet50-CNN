@@ -1,0 +1,220 @@
+/* 
+   LayerTraversalViewer.css
+   Minimalist Pixel Flow Styles
+*/
+
+.layer-viewer--minimal {
+  position: relative;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  margin-top: 20px;
+  overflow: visible;
+}
+
+.layer-viewer__header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.layer-viewer__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.5px;
+}
+
+.layer-viewer__desc {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* SCRUBBER */
+.layer-viewer__scrubber {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.layer-viewer__slider {
+  width: 100%;
+  max-width: 400px;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #1e293b;
+  border-radius: 2px;
+  outline: none;
+}
+
+.layer-viewer__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #38bdf8;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  border: 2px solid #0f172a;
+}
+
+.layer-viewer__active-block {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* FLOW ANIMATION */
+.layer-viewer__flow-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.layer-viewer__particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #38bdf8;
+  border-radius: 50%;
+  filter: blur(2px);
+  box-shadow: 0 0 12px #38bdf8, 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* DISPLAY */
+.layer-viewer__display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.layer-viewer__box {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.layer-viewer__image {
+  width: 160px;
+  height: 160px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.layer-viewer__tag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.layer-viewer__arrow {
+  font-size: 24px;
+  color: #1e293b;
+  font-weight: 300;
+}
+
+/* SIGNAL INTENSITY */
+.layer-viewer__intensity {
+  margin-top: 32px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.intensity-header {
+  font-size: 10px;
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.intensity-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.intensity-bar {
+  display: grid;
+  grid-template-columns: 100px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+}
+
+.intensity-bar__label {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.intensity-bar__track {
+  height: 6px;
+  background: #1e293b;
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.intensity-bar__fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  border-radius: 100px;
+}
+
+.intensity-bar__fill--fx {
+  background: linear-gradient(90deg, #ec4899, #f43f5e);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+}
+
+.intensity-bar__fill--x {
+  background: linear-gradient(90deg, #10b981, #06b6d4);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+.intensity-bar__value {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: #475569;
+  text-align: right;
+}
+
+.intensity-desc {
+  font-size: 9px;
+  color: #475569;
+  margin-top: 16px;
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.layer-viewer__status {
+  text-align: center;
+  color: #475569;
+  font-size: 12px;
+  font-style: italic;
+  padding: 40px;
+}

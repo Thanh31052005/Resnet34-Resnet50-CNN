@@ -1,0 +1,188 @@
+/* 
+   KernelSweepDemo.css
+   Style Dashboard: Cyan Glow, Laser Beams, Scientific Magnifier
+*/
+
+.kernel-sweep {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  margin-top: 10px;
+  backdrop-filter: blur(8px);
+}
+
+.kernel-sweep__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.kernel-sweep__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kernel-sweep__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.kernel-sweep__viewport {
+  position: relative;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  aspect-ratio: 1;
+}
+
+.kernel-sweep__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  opacity: 0.85;
+}
+
+/* SCANNING WINDOW */
+.kernel-sweep__window {
+  position: absolute;
+  width: 20%; /* Tỉ lệ mô phỏng kernel 7x7 */
+  height: 20%;
+  border: 1.5px solid #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.2);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.kernel-sweep__window:after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  filter: blur(2px);
+}
+
+.kernel-sweep__window-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 100%;
+  opacity: 0.3;
+}
+
+.grid-line {
+  border: 0.5px solid #38bdf8;
+}
+
+/* HUB (MAGNIFIER / MATH) */
+.kernel-sweep__hub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 110px;
+}
+
+.kernel-sweep__magnifier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.magnifier-box {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.magnifier-box--weights {
+  border-color: #f59e0b;
+}
+
+.magnifier-label {
+  font-size: 8px;
+  color: #475569;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.magnifier-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  width: 56px;
+}
+
+.magnifier-pixel {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+.magnifier-weight {
+  width: 7px;
+  height: 7px;
+  background: #f59e0b;
+  border-radius: 1px;
+}
+
+.kernel-sweep__math-sign {
+  font-size: 14px;
+  font-weight: 900;
+  color: #38bdf8;
+}
+
+.kernel-sweep__result-line {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: #334155;
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* OUTPUT PIXEL */
+.kernel-sweep__pixel-out {
+  position: absolute;
+  width: 3%;
+  height: 3%;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.kernel-sweep__status {
+  font-size: 9px;
+  color: #94a3b8;
+  text-align: center;
+  font-style: italic;
+}
+
+.kernel-sweep__footer {
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(56, 189, 248, 0.05);
+  border-radius: 8px;
+}
+
+.info-tag {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.5;
+}
