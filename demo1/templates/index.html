@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ResNet 34 và Resnet 50</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #0a0a0a;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            width: 380px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container {
+            margin-bottom: 20px;
+        }
+
+        video,
+        canvas {
+            border: 3px solid #555;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .btn-blue {
+            background: #008CBA;
+        }
+
+        .btn-blue:hover {
+            background: #007bb5;
+        }
+
+        .top1 {
+            color: #00ff00;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .other {
+            color: #bbb;
+            font-size: 0.9em;
+            text-align: left;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        .time {
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .timing-table {
+            width: 100%;
+            font-size: 0.85em;
+            text-align: left;
+            margin-top: 15px;
+            border-collapse: collapse;
+        }
+
+        .timing-table td {
+            border-bottom: 1px solid #444;
+            padding: 4px 0;
+            color: #ccc;
+        }
+
+        .timing-table span {
+            float: right;
+            color: #00d2ff;
+        }
+
+        #status-info {
+            color: #00d2ff;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .journey-section {
+            margin-top: 50px;
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .journey-section h2 {
+            color: #f1c40f;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-step {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #333;
+        }
+
+        .step-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #00d2ff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .compare-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .compare-col {
+            flex: 1;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            position: relative;
+        }
+
+        .model-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .model-desc {
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .large-feature-img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background: #fff;
+            padding: 2px;
+            image-rendering: pixelated;
+            transition: 0.3s;
+        }
+
+        .toggle-controls {
+            margin-top: 10px;
+        }
+
+        .toggle-btn {
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .toggle-btn:hover {
+            background: #555;
+        }
+
+        .channel-info {
+            font-size: 0.9em;
+            color: #f1c40f;
+            display: inline-block;
+            margin: 0 10px;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ResNet-34 & ResNet-50</h1>
+
+    <div class="video-container">
+        <video id="video" width="320" height="240" autoplay playsinline></video>
+        <canvas id="snapshot" width="224" height="224" style="display: none; border-color: #00ff00;"></canvas>
+    </div>
+
+    <div>
+        <button id="capture-btn" class="btn">Chụp</button>
+        <label for="file-upload" class="btn btn-blue">Tải Ảnh Lên</label>
+        <input type="file" id="file-upload" accept="image/*" style="display: none;">
+    </div>
+
+    <p id="status-info">Hệ thống sẵn sàng...</p>
+
+    <div class="flex">
+        <div class="card">
+            <h2>ResNet-34</h2>
+            <div id="t34" class="time">Tổng tốc độ: --</div>
+            <div id="r34"></div>
+            <div id="stages34"></div>
+        </div>
+        <div class="card">
+            <h2>ResNet-50</h2>
+            <div id="t50" class="time">Tổng tốc độ: --</div>
+            <div id="r50"></div>
+            <div id="stages50"></div>
+        </div>
+    </div>
+
+    <div id="journey-section" class="journey-section">
+        <h2>Phân tách</h2>
+        <div id="timeline-container"></div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
